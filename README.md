@@ -15,5 +15,5 @@
 - 💬 Ask me about comics, amateur astronomy, breaking bad and I don't know, whatever you like
 ```
 <br/>  
-<div align="center"><img src="https://github-readme-stats.vercel.app/api?username=centarsirius&show_icons=true&theme=nightowl&count_private=true" align="center" /></div>
+</div>
 
