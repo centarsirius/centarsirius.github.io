@@ -8,7 +8,7 @@
 <br/>
 
 ```math
-- 🔭 I’m currently working on stellar nucleosynthesis, cosmoloigcal evolution modeling and blah blah blah
+- 🔭 I’m currently working on stellar nucleosynthesis, cosmoloigcal evolution modeling and blah blah
 - 🌱 I’m currently learning high energy processes in astrophysics and GW analysis
 - 🤔 I’m looking for international research projects on Astrophysics and High Energy Physics
 - 👨‍💻 Languages and software known - python, c++, IDL/GDL, MATLAB, COMSOL, LaTeX among others
