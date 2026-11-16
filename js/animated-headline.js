@@ -48,8 +48,9 @@ jQuery(document).ready(function($){
 				setTimeout(function(){ headline.find('.cd-words-wrapper').addClass('is-loading') }, barWaiting);
 			} else if (headline.hasClass('clip')){
 				var spanWrapper = headline.find('.cd-words-wrapper'),
-					newWidth = spanWrapper.width() + 10
-				spanWrapper.css('width', newWidth);
+					visWord = spanWrapper.find('.is-visible').eq(0),
+					newWidth = Math.ceil(visWord.outerWidth() || spanWrapper.width());
+				spanWrapper.css('width', newWidth + 'px');
 			} else if (!headline.hasClass('type') ) {
 				//assign to .cd-words-wrapper the width of its longest word
 				var words = headline.find('.cd-words-wrapper b'),
@@ -84,10 +85,12 @@ jQuery(document).ready(function($){
 			showLetter(nextWord.find('i').eq(0), nextWord, bool, lettersDelay);
 
 		}  else if($word.parents('.cd-headline').hasClass('clip')) {
-			$word.parents('.cd-words-wrapper').animate({ width : '2px' }, revealDuration, function(){
+			var wrapper = $word.parents('.cd-words-wrapper');
+			wrapper.css('width', '0px');
+			setTimeout(function(){
 				switchWord($word, nextWord);
 				showWord(nextWord);
-			});
+			}, revealDuration);
 
 		} else if ($word.parents('.cd-headline').hasClass('loading-bar')){
 			$word.parents('.cd-words-wrapper').removeClass('is-loading');
@@ -107,9 +110,12 @@ jQuery(document).ready(function($){
 			$word.addClass('is-visible').removeClass('is-hidden');
 
 		}  else if($word.parents('.cd-headline').hasClass('clip')) {
-			$word.parents('.cd-words-wrapper').animate({ 'width' : $word.width() + 10 }, revealDuration, function(){ 
-				setTimeout(function(){ hideWord($word) }, revealAnimationDelay); 
-			});
+			var wrapper = $word.parents('.cd-words-wrapper');
+			var targetWidth = Math.ceil($word.outerWidth());
+			wrapper.css('width', targetWidth + 'px');
+			setTimeout(function(){
+				setTimeout(function(){ hideWord($word); }, revealAnimationDelay);
+			}, revealDuration);
 		}
 	}
 
