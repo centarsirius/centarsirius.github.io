@@ -2,10 +2,10 @@
 <html>
 
 <head>
-    <title>Sachin Venkatesh</title>
+    <title>Sachin Venkatesh — Physics PhD, AI for Black-Hole Simulations</title>
     <meta charset="UTF-8">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta name="description" content="Sachin Venkatesh, Physics PhD candidate at Northwestern working on physics-constrained neural operators for H-AMR GRMHD black-hole simulations. AI for science, HPC, time-domain astrophysics.">
+    <meta name="keywords" content="Sachin Venkatesh, GRMHD, H-AMR, neural operators, AI for science, black holes, Northwestern physics">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Latest compiled and minified CSS -->
@@ -18,6 +18,7 @@
 
     <!--custom css-->
     <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link rel="preload" as="image" href="images/hero_poster_wipe.jpg">
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -27,9 +28,6 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    
-    <!-- Youtube Video Background -->
-    <link rel="stylesheet" type="text/css" href="jquery.mb.YTPlayer/css/jquery.mb.YTPlayer.min.css" />
 
     <!--headline js-->
     <script src="js/animated-headline.js"></script>
@@ -37,7 +35,10 @@
     <script>
         $(document).ready(function() {
             $(".site-nav-icon").click(function() {
-                $(".mob-menu ul").toggle("slow");
+                $(".mob-menu ul").toggle("fast");
+            });
+            $(".mob-dropmenu a").click(function() {
+                $(".mob-menu ul").slideUp("fast");
             });
         });
     </script>
@@ -52,14 +53,19 @@
 
 
     <!--Home Section Start-->
-    <video autoplay loop muted style="position: absolute;height: 100vh;width: 100%;z-index: -100;top: 0%;left: 0%;object-fit: fill;">
-        <source src="images/Illustris Simulation of the Universe (w_ music).mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video> 
-    <div class="overlay" style="position: absolute;top: 100%;left: 77%">
-        <p><a target="_blank" href="https://www.youtube.com/watch?v=NjSFR40SY58&ab_channel=MarkVogelsberger">Video Credits - Prof. Vogelsberger</a></p>
-    </div>    
     <section id="home" class="banner">
+        <div class="hero-wipe" id="hero-wipe" style="--pos: 50%;">
+            <video id="hero-wipe-video" autoplay loop muted playsinline preload="auto" poster="images/hero_poster_wipe.jpg" aria-hidden="true">
+                <source src="images/hero_xz_wipe.mp4" type="video/mp4">
+            </video>
+            <canvas id="hero-wipe-canvas" width="800" height="800"></canvas>
+            <div class="hero-wipe-divider" aria-hidden="true">
+                <span class="hero-wipe-grip">◂ ▸</span>
+            </div>
+            <span class="hero-tag left">H-AMR</span>
+            <span class="hero-tag right">Emulator</span>
+            <input type="range" min="0" max="100" value="50" aria-label="Compare H-AMR ground truth video vs neural operator forecast video">
+        </div>
         <!-- <ul class="circles">
             <li></li>
             <li></li>
@@ -76,13 +82,15 @@
 
         <div class="container">
             <!--start mobile header-->
-                <a class="site-nav-icon"> <i class="fa fa-bars" aria-hidden="true"></i> </a>
+                <a class="site-nav-icon" aria-label="Toggle navigation"> <i class="fa fa-bars" aria-hidden="true"></i> </a>
                 <div class="mob-menu">
                     <ul class="mob-dropmenu">
-                        <li> <a href="#">Home</a></li>
+                        <li><a href="#">Home</a></li>
                         <li><a href="#about-me">About Me</a></li>
-                        <li><a href="#experience">Experience</a></li>
                         <li><a href="#research">Research</a></li>
+                        <li><a href="#experience">Experience</a></li>
+                        <li><a href="#publications">Publications</a></li>
+                        <li><a href="#talks">Talks</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
@@ -93,7 +101,10 @@
                         <div class="head-link">
                             <a href="#">Home</a>
                             <a href="#about-me">About Me</a>
+                            <a href="#research">Research</a>
                             <a href="#experience">Experience</a>
+                            <a href="#publications">Publications</a>
+                            <a href="#talks">Talks</a>
                             <a href="#contact">Contact</a>
                         </div>
                     </div>
@@ -104,12 +115,13 @@
                 <h1>Hi! I'm Sachin Venkatesh</h1>
                 <p class="cd-headline clip mt-30">
                     <!-- <span>Lorem Ipsum is simply dummy text of the.</span><br> -->
-                    <span class="blc">Exploring more about</span>
+                    <span class="blc">Physics PhD — ML-AI for</span>
                     <span class="cd-words-wrapper">
-                        <b class="is-visible">Astronomy and Astrophysics</b>
-                        <b>Galaxy Formation and Evolution </b>
-                        <b>Stellar nucleosynthesis </b>
-                        <b>Machine Learning </b>
+                        <b class="is-visible">Black-Hole Simulations</b>
+                        <b>Neural Operators</b>
+                        <b>Time-Domain Astrophysics</b>
+                        <b>High-Performance Computing</b>
+                        <b>AI Safety</b>
                     </span>
                 </p>
             </div>
@@ -136,7 +148,7 @@
                 <div class="col-lg-5 col-md-6">
                     <!--About Image-->
                     <div class="about-img">
-                        <img src="images/sachin.jpeg" alt="Sachin">
+                        <img src="images/sachin_red.jpg" alt="Sachin Venkatesh">
                     </div>
                 </div>
                 <div class="col-lg-7 col-md-6">
@@ -144,42 +156,35 @@
                     <div class="about-content">
 
                         <div class="name">
-                            <h3>Sachin venkatesh<span class="bg">About</span></h3>
+                            <h3>Sachin Venkatesh<span class="bg">About</span></h3>
                         </div>
                         <div class="text">
-                            <p>I'm Sachin Venkatesh, a first year physics graduate student at the Georgia Institute of Technology. My research interests include but are not limited to galaxies, stellar evolution and
-                                compact objects, especially their computational aspects.</p>
-                            <p>I am currently working with Dr. Matthew Liska here at Georgia Tech, investigating the boundary condition problems of Black Hole simulations using H-AMR : A New GPU-accelerated GRMHD Code for Exascale Computing With 3D Adaptive Mesh Refinement and Local Adaptive Time-stepping.
-                                This would help us to largely reduce the repetitive simulations to be run by helping us increase the resolution and scale of the simulations. I have previously worked on halo formation history and determining their properties using machine learning at the Center for Computational 
-                                Astrophysics, worked on using Gaussian ML to classify GRBs spread over 10+ classes at the National Astronomical Observatory of Japan, and have also delved into Gravitational Wave data analysis, Radio Astronomy, both instrumentation of a radio antenna to act as
-                                the template for a large array and also on the observation side as a member of the SWAN, India.
-                            </a> </p>
-                            <p>
-                                I'm also interested in the numerical/computational methods and technical advancements, especially of ML methods and LLMs. I'm keen on harnessign these methodologies to produce physics-informed 
-                                ML models. Please reach out if you would like to talk about the same.
+                            <p>I'm Sachin Venkatesh, a Physics PhD candidate at Northwestern University, working broadly on physics-informed ML+AI advised by Prof. Alexander Tchekhovskoy. I was previously doing my PhD at Georgia Tech where I received my MS in Computational Science and Engineering and MS in Physics. Prior to that, I received my B.Tech in Engineering Physics from Delhi Technological University.</p>
+                            <p>My research primarily focuses on <b>physics-informed neural-operator emulators for 3D GRMHD black-hole simulations</b> — forecasting full simulation states on the native grid as boundary conditions for a hybrid simulation+emulation framework. Previously, I worked on unsupervised GRB classification at NAOJ Japan, IllustrisTNG at CCA Flatiron, turbulence super-resolution at DTU, and production data engineering (Snowflake/SQL/PySpark) at Genpact.
                             </p>
                             <p>
-                                I applied to physics and astronomy programs and learnt a lot, especially after being rejected everywhere during my first cycle. And I've so much to share 
-                                about the process and things that'd help yout to stand out. Therefore, if you have any queries, don't hesitate to reach out. Because, this was me last year
-                                "I am applying for Graduate Schools in Physics and Astronomy for Fall'22 and would be highly interested to know more about
-                                opportunities in different schools which work on the abovementioned research fields. So please feel free to reach out and share
-                                any suggestions, feedback, or guidance you may have for me. I would be extremely grateful for it!"
+                                Core stack spans PyTorch/TensorFlow, JAX, CUDA, MPI, and multi-node accelerated training — emphasizing physical validity like conservation laws and statistical rigor over pure pixel error.
                             </p>
+                            <p>
+                                I'm always happy to talk and learn more about physics-informed ML, GRMHD astrophysics, or time-domain ML — please reach out below.
                             </p>
-                               Manuscript list - <a target="_blank" href="https://ui.adsabs.harvard.edu/search/q=author%3A%22Sachin%20Venkatesh%2C%20T.%20S.%22&sort=date%20desc%2C%20bibcode%20desc&p_=0">
-                                    here! </a>
+                            <p class="academic-links">
+                                Profiles:
+                                <a target="_blank" rel="noopener noreferrer" href="https://scholar.google.com/citations?user=sXThXtUAAAAJ&hl=en">Google Scholar</a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://ui.adsabs.harvard.edu/search/q=author%3A%22Sachin%20Venkatesh%2C%20T.%20S.%22&sort=date%20desc%2C%20bibcode%20desc&p_=0">NASA ADS</a>
                             </p>
                         </div>
 
                         <!--About Social Icons-->
                         <div class="social-icons">
-                            <a target="_blank" href="mailto:tssachin.venkatesh@gmail.com"><i class="fa fa-envelope"></i></a>
-                            <a target="_blank" href="https://www.linkedin.com/in/sachin-venkatesh/"><i class="fa fa-linkedin"></i></a>
-                            <a target="_blank" href="https://twitter.com/centarsirius"><i class="fa fa-twitter"></i></a>
-                            <a target="_blank" href="https://github.com/centarsirius"><i class="fa fa-github"></i></a>
+                            <a target="_blank" rel="noopener noreferrer" href="mailto:tssachin.venkatesh@gmail.com" aria-label="Email"><i class="fa fa-envelope"></i></a>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/sachin-venkatesh/" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
+                            <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/centarsirius" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+                            <a target="_blank" rel="noopener noreferrer" href="https://github.com/centarsirius" aria-label="GitHub"><i class="fa fa-github"></i></a>
                         </div>
                         <span class="about-button">
-                            <a class="main-btn" href="cv/Sachin_resume_2026.pdf" target="_blank">Download Resume</a>
+                            <a class="main-btn" href="cv/Sachin_resume_industry.pdf" target="_blank">Industry Resume</a>
+                            <a class="main-btn" href="cv/Sachin_cv_academic.pdf" target="_blank">Academic CV</a>
                         </span>
                     </div>
                 </div>
@@ -187,6 +192,108 @@
         </div>
     </section>
     <!--About Section End-->
+
+    <!--Research Spotlight Start-->
+    <section class="research" id="research">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="name">
+                        <h3>Research spotlight<span class="bg">RESEARCH</span></h3>
+                        <span>My simulations vs. my emulator — drag the slider: left = H-AMR ground truth, right = neural operator forecast</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12">
+                    <h4>Hybrid emulator for 3D GRMHD simulations <small style="font-weight:400;">— in prep.; follow-up simulation+emulation in prep.</small></h4>
+                    <p>Multiple snapshots (cadence Δt = 25 R<sub>g</sub>/c), 8 primitives from a 3D GRMHD simulation + full Kerr metric. Factorized angular+radial convs, Fourier operator bottleneck, 9-objective physics loss with unrolled training. Stable 1/10/50-step rollouts preserving mass profiles, physical diagnostics, and jet morphology for hybrid simulation+emulation boundary conditions.</p>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12 mb-2">
+                    <a href="images/density_multi_forecast.png" target="_blank" title="Open full-resolution figure">
+                        <picture>
+                            <source srcset="images/research/multi_forecast_2000.webp" media="(min-width: 768px)" type="image/webp">
+                            <source srcset="images/research/multi_forecast_1200.webp" type="image/webp">
+                            <source srcset="images/research/multi_forecast_2000.jpg" media="(min-width: 768px)">
+                            <img src="images/research/multi_forecast_1200.jpg" alt="Ground truth vs 10/25/50/100-step density forecasts in xz and xy planes" loading="lazy" style="width:100%;height:auto;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.18);">
+                        </picture>
+                    </a>
+                    <p class="mt-2"><b>Stability across horizons.</b> Same target frame forecast from 10 → 100 earlier snapshots (250 → 2500 R<sub>g</sub>/c): disk structure and jet funnel persist even as the exact turbulent realization diverges — the statistical fidelity a boundary-condition emulator needs. Top: xz meridian slice; bottom: xy equatorial slice.</p>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12"><h5>Same model, three channels — drag each slider (left: H-AMR, right: forecast)</h5></div>
+                <div class="col-md-4 mb-4">
+                    <div class="compare" data-compare>
+                        <picture>
+                            <source srcset="images/research/rho_forecast_800.webp" type="image/webp">
+                            <img src="images/research/rho_forecast_800.jpg" alt="Neural operator density forecast" loading="lazy">
+                        </picture>
+                        <div class="cmp-top">
+                            <picture>
+                                <source srcset="images/research/rho_input_800.webp" type="image/webp">
+                                <img src="images/research/rho_input_800.jpg" alt="H-AMR density ground truth" loading="lazy">
+                            </picture>
+                        </div>
+                        <span class="cmp-tag left">H-AMR</span><span class="cmp-tag right">Forecast</span>
+                        <div class="cmp-grip">◂ ▸</div>
+                        <input type="range" min="0" max="100" value="50" aria-label="Compare density ground truth vs forecast">
+                    </div>
+                    <p class="mt-2"><b>Density ρ</b> — xz slice, r ≤ 50 R<sub>g</sub>. Accretion disk + funnel reproduced; errors concentrate in turbulent jet, not the disk body.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="compare" data-compare>
+                        <picture>
+                            <source srcset="images/research/ug_forecast_800.webp" type="image/webp">
+                            <img src="images/research/ug_forecast_800.jpg" alt="Neural operator internal energy forecast" loading="lazy">
+                        </picture>
+                        <div class="cmp-top">
+                            <picture>
+                                <source srcset="images/research/ug_input_800.webp" type="image/webp">
+                                <img src="images/research/ug_input_800.jpg" alt="H-AMR internal energy ground truth" loading="lazy">
+                            </picture>
+                        </div>
+                        <span class="cmp-tag left">H-AMR</span><span class="cmp-tag right">Forecast</span>
+                        <div class="cmp-grip">◂ ▸</div>
+                        <input type="range" min="0" max="100" value="50" aria-label="Compare internal energy ground truth vs forecast">
+                    </div>
+                    <p class="mt-2"><b>Internal energy u<sub>g</sub></b> — same slice. Shock-aware gradient + spectral losses keep disk thermodynamics sharp.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="compare" data-compare>
+                        <picture>
+                            <source srcset="images/research/bsq_forecast_800.webp" type="image/webp">
+                            <img src="images/research/bsq_forecast_800.jpg" alt="Neural operator magnetic energy forecast" loading="lazy">
+                        </picture>
+                        <div class="cmp-top">
+                            <picture>
+                                <source srcset="images/research/bsq_input_800.webp" type="image/webp">
+                                <img src="images/research/bsq_input_800.jpg" alt="H-AMR magnetic energy ground truth" loading="lazy">
+                            </picture>
+                        </div>
+                        <span class="cmp-tag left">H-AMR</span><span class="cmp-tag right">Forecast</span>
+                        <div class="cmp-grip">◂ ▸</div>
+                        <input type="range" min="0" max="100" value="50" aria-label="Compare magnetic energy ground truth vs forecast">
+                    </div>
+                    <p class="mt-2"><b>Magnetic energy b²</b> — jet/disk boundary preserved with soft ∇·B penalty, no post-hoc cleaning.</p>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-lg-10 mx-auto">
+                    <div class="research-video-card">
+                        <video controls autoplay loop muted playsinline preload="metadata" poster="images/hero_poster_turb.jpg">
+                            <source src="images/uno_turb.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p class="mt-2 mb-0"><b>Autoregressive rollout movie (up to 99 steps).</b> Ground truth vs. neural operator forecast for density over ~2,500 R<sub>g</sub>/c.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Research Spotlight End-->
 
 
 
@@ -203,7 +310,7 @@
             <div class="row">
                 <div class="col-12 text-center">
                     <div class="name">
-                        <h3>Academic trajectory<span class="bg">EXPERIENCE</span></h3>
+                        <h3>Experience &amp; Education<span class="bg">EXPERIENCE</span></h3>
                         <span>A summary</span>
                     </div>
                 </div>
@@ -216,19 +323,29 @@
                                 <div class="icon">
                                     <i class="fa fa-graduation-cap"></i>
                                 </div>
-                                <span class="time open-sans-font text-uppercase">2023 - Present</span>
+                                <span class="time open-sans-font text-uppercase">2025 - 2028 (expected)</span>
                                 <h5 class="poppins-font text-uppercase">PhD - Physics
                                     <!-- <span class="place open-sans-font">Videohive</span> -->
                                 </h5>
-                                <p class="open-sans-font"> Georgia Institute of Technology
+                                <p class="open-sans-font"> Northwestern University (advisor: Alexander Tchekhovskoy)
                                 </p>    
+                             </li>
+                             <li>
+                                <div class="icon">
+                                    <i class="fa fa-graduation-cap"></i>
+                                </div>
+                                <span class="time open-sans-font text-uppercase">2023 - 2025</span>
+                                <h5 class="poppins-font text-uppercase">MS Computational Science and Engineering; MS Physics 
+                                </h5>
+                                <p class="open-sans-font"> Georgia Institute of Technology (advisor: Matthew Liska, PhD transferred)
+                                </p>
                              </li>
                              <li>                                 
                                 <div class="icon">
                                     <i class="fa fa-graduation-cap"></i>
                                 </div>
                                 <span class="time open-sans-font text-uppercase">2018 - 2022</span>
-                                <h5 class="poppins-font text-uppercase">Bachelor’s Degree
+                                <h5 class="poppins-font text-uppercase">Bachelor of Technology - Engineering Physics (Minor in Space and Atmospheric Sciences)
                                     <!-- <span class="place open-sans-font">Videohive</span> -->
                                 </h5>
                                 <p class="open-sans-font"> Delhi Technological University
@@ -241,7 +358,7 @@
                 <div class="col-lg-12">
                     <hr>
                     <div class="resume-box mt-4">
-                        <h2>RESEARCH EXPERIENCE</h2>
+                        <h2>EXPERIENCE</h2>
                         <span class="border"></span>
                         <div class="row">
                             <div class="col-md-6">
@@ -250,42 +367,39 @@
                                         <div class="icon">
                                             <i class="fa fa-briefcase"></i>
                                         </div>
-                                        <span class="time open-sans-font text-uppercase">Oct'23 - Present </span>
-                                        <h5 class="poppins-font text-uppercase"> H-AMR improvements and BH survey
-                                        </h5>
-                                        <p class="open-sans-font">Advisor: Matthew Liska, Georgia Institute of Technology
-                                        </p>
+                                        <span class="time open-sans-font text-uppercase">Jun'25 - Present</span>
+                                        <h5 class="poppins-font text-uppercase">Neural-operator emulator for H-AMR GRMHD (thesis)</h5>
+                                        <p class="open-sans-font">Advisor: Alexander Tchekhovskoy, Northwestern University</p>
+                                        <p class="open-sans-font exp-impact">Designed a physics-informed GRMHD neural operator with a 9-objective physics loss that forecasts over ~80B tensor points for stable multi-step rollouts.</p>
                                     </li>
                                     <li>
                                         <div class="icon">
                                             <i class="fa fa-briefcase"></i>
                                         </div>
-                                        <span class="time open-sans-font text-uppercase">Jun'22 - Aug'23 </span>
-                                        <h5 class="poppins-font text-uppercase">GRB Optical and X-ray Plateau Properties Classifier Using Unsupervised Machine Learning
-                                        </h5>
-                                        <p class="open-sans-font">Advisor: Maria Dainotti, National Astronomical Observatory of Japan
-                                        </p>
+                                        <span class="time open-sans-font text-uppercase">Sep'23 - May'25</span>
+                                        <h5 class="poppins-font text-uppercase">Physics-informed ML for H-AMR</h5>
+                                        <p class="open-sans-font">Advisor: Matthew Liska, Georgia Institute of Technology</p>
+                                        <p class="open-sans-font exp-impact">Prototyped physics-informed reconstruction models and built the data-validation, normalization, and physics-loss scaffolding reused in thesis work.</p>
                                     </li>
                                     <li>
                                         <div class="icon">
                                             <i class="fa fa-briefcase"></i>
                                         </div>
-                                        <span class="time open-sans-font text-uppercase">Nov'21 - Present </span>
-                                        <h5 class="poppins-font text-uppercase">Peering into the Radio Universe - DU IoE project 
-                                        </h5>
-                                        <p class="open-sans-font">Advisor: T. R. Seshadri, University of Delhi 
-                                        </p>
-                                    </li>                                                                    
-                                    <li>                                        
+                                        <span class="time open-sans-font text-uppercase">Jul'22 - Jun'23</span>
+                                        <h5 class="poppins-font text-uppercase">Data Engineer (big-data datalakes, Snowflake/SQL/PySpark)</h5>
+                                        <p class="open-sans-font">Genpact</p>
+                                        <p class="open-sans-font exp-impact">Built production Snowflake, SQL, and PySpark data lakes and shipped a full-stack legacy-DB-to-Snowflake migrator that cut query runtimes by 17×.</p>
+                                    </li>
+                                    <li>
                                         <div class="icon">
                                             <i class="fa fa-briefcase"></i>
                                         </div>
-                                        <span class="time open-sans-font text-uppercase">May'21 - Aug'21 </span>
-                                        <h5 class="poppins-font text-uppercase">Studying dark matter halos and their properties, exploring applications of ML in IllustrisTNG
-                                        </h5>
-                                        <p class="open-sans-font">Center for Computational Astrophysics, Flatiron Institiute, NY    
-                                        </p>
-                                    </li>                                  
+                                        <span class="time open-sans-font text-uppercase">May'22 - Aug'23</span>
+                                        <h5 class="poppins-font text-uppercase">GRB Optical and X-ray Plateau Properties Classifier Using Unsupervised Machine Learning</h5>
+                                        <p class="open-sans-font">Advisor: Maria Dainotti, National Astronomical Observatory of Japan</p>
+                                        <p class="open-sans-font exp-impact">Clustered Swift-BAT and BATSE gamma-ray burst catalogs using Gaussian Mixture Models and Bayesian Information Criterion across 10+ classes (co-author, <i>MNRAS</i> 525, 5204).</p>
+                                    </li>
+                                </ul>
                             </div>
                             <div class="col-md-6">
                                 <ul>
@@ -293,35 +407,37 @@
                                         <div class="icon">
                                             <i class="fa fa-briefcase"></i>
                                         </div>
-                                        <span class="time open-sans-font text-uppercase">Jan'21 - May'22
-                                        </span>
-                                        <h5 class="poppins-font text-uppercase">Superresolution (ML) reconstruction of Isotropic turbulent flows
-                                        </h5>
-                                        <p class="open-sans-font">Advisor: R.K.Singh, Fluid Mechanics Laboratory, Delhi Technological University, India
-                                        </p>
-                                    </li>                                      
-                                    <li>
-                                        <div class="icon">
-                                            <i class="fa fa-briefcase"></i>
-                                        </div>
-                                        <span class="time open-sans-font text-uppercase">May'20 - Jan'21
-                                        </span>
-                                        <h5 class="poppins-font text-uppercase">Modeling dust scattering and halos using GALEX data
-                                        </h5>
-                                        <p class="open-sans-font">Advisor: Jayant Murthy, Indian Institute for Astrophysics
-                                        </p>
+                                        <span class="time open-sans-font text-uppercase">Nov'21 - Dec'22</span>
+                                        <h5 class="poppins-font text-uppercase">Peering into the Radio Universe - DU IoE project</h5>
+                                        <p class="open-sans-font">Advisor: T. R. Seshadri, University of Delhi</p>
+                                        <p class="open-sans-font exp-impact">Helped establish an INR 800,000 radio astronomy lab that focuses on low-frequency antenna fabrication and receiver electronics.</p>
                                     </li>
                                     <li>
                                         <div class="icon">
                                             <i class="fa fa-briefcase"></i>
                                         </div>
-                                        <span class="time open-sans-font text-uppercase">Jun'20 - Sep'20
-
-                                        </span>
-                                        <h5 class="poppins-font text-uppercase">SWAN Antenna Design Challenge 2020
-                                        </h5>
-                                        <p class="open-sans-font">Advisor: T.R.Seshadri, University of Delhi, India
-                                        </p>
+                                        <span class="time open-sans-font text-uppercase">May'21 - Aug'21</span>
+                                        <h5 class="poppins-font text-uppercase">Studying dark matter halos and their properties, exploring applications of ML in IllustrisTNG</h5>
+                                        <p class="open-sans-font">Center for Computational Astrophysics, Flatiron Institute, NY</p>
+                                        <p class="open-sans-font exp-impact">Case study of IllustrisTNG dark-matter halo merger trees to probe self-similarity across trajectories.</p>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fa fa-briefcase"></i>
+                                        </div>
+                                        <span class="time open-sans-font text-uppercase">May'20 - Jan'21</span>
+                                        <h5 class="poppins-font text-uppercase">Modeling dust scattering and halos using GALEX data</h5>
+                                        <p class="open-sans-font">Advisor: Jayant Murthy, Indian Institute for Astrophysics</p>
+                                        <p class="open-sans-font exp-impact">Modeled UV dust scattering and halos in GALEX survey data to study OB star evolution and cosmic dust effects on star-formation rates.</p>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fa fa-briefcase"></i>
+                                        </div>
+                                        <span class="time open-sans-font text-uppercase">Feb'20 - May'22</span>
+                                        <h5 class="poppins-font text-uppercase">Superresolution (ML) reconstruction of Isotropic turbulent flows</h5>
+                                        <p class="open-sans-font">Advisor: R.K.Singh, Fluid Mechanics Laboratory, Delhi Technological University, India</p>
+                                        <p class="open-sans-font exp-impact">Led comparative deep super-resolution benchmarks for isotropic turbulence (ASME IMECE2021 talk &amp; proceedings; Applied-ML Honorable Mention; DeepAI special mention).</p>
                                     </li>
                                 </ul>
                             </div>
@@ -335,6 +451,89 @@
     </section>
     <!---------------END My Resume---------------->
 
+    <!---------------START Publications---------------->
+    <section class="resume" id="publications">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="name">
+                        <h3>Publications<span class="bg">PAPERS</span></h3>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="resume-box">
+                        <h2>IN PREPARATION</h2>
+                        <span class="border"></span>
+                        <ul>
+                            <li>Venkatesh et al. — Physics-constrained Hybrid (2+1)D U-NO for autoregressive GRMHD forecasting on curved spacetime. In prep. (target: PRL/PRD), with follow-up work on generalized cross-simulation operators.</li>
+                        </ul>
+                    </div>
+                    <div class="resume-box mt-4">
+                        <h2>PEER-REVIEWED</h2>
+                        <span class="border"></span>
+                        <ul>
+                            <li>Bhardwaj, Dainotti, <b>Venkatesh</b> et al. 2023, <i>MNRAS</i> 525, 5204 — GRB optical/X-ray plateau classifier with unsupervised ML. <a href="https://doi.org/10.1093/mnras/stad2593" target="_blank">doi</a></li>
+                            <li><b>Venkatesh</b>, Pundir 2022, <i>Res. Notes AAS</i> 6, 255 — PERISTOLE: time-delay plots from gravitational lensing. <a href="https://iopscience.iop.org/article/10.3847/2515-5172/aca6ec" target="_blank">doi</a> / <a href="https://github.com/centarsirius/peristole" target="_blank">code</a> / <a href="https://doi.org/10.5281/zenodo.6744000" target="_blank">Zenodo</a></li>
+                            <li><b>Venkatesh</b>, Bhatt et al. 2021, ASME IMECE2021-69923 — A comparative study of deep learning techniques for spatio-temporal super-resolution reconstruction of forced isotropic turbulent flows. <a href="https://doi.org/10.1115/IMECE2021-69923" target="_blank">doi</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!---------------END Publications---------------->
+
+    <!---------------START Talks & Workshops---------------->
+    <section class="resume" id="talks">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="name">
+                        <h3>Talks &amp; Conferences<span class="bg">TALKS</span></h3>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="resume-box">
+                        <h2>SELECTED TALKS</h2>
+                        <span class="border"></span>
+                        <ul>
+                            <li><div class="talk-item"><span><b>Chicagoland AI+Cosmology Workshop</b> — Fermilab</span><span class="talk-date">Aug 2026</span></div></li>
+                            <li><div class="talk-item"><span><b>Black Hole Initiative Conference</b> — Harvard</span><span class="talk-date">Mar 2026</span></div></li>
+                            <li><div class="talk-item"><span><b>International Mechanical Engineering Congress &amp; Exposition</b> — ASME</span><span class="talk-date">Nov 2021</span></div></li>
+                        </ul>
+                    </div>
+                    <div class="resume-box mt-4">
+                        <h2>CONFERENCES, POSTERS &amp; WORKSHOPS</h2>
+                        <span class="border"></span>
+                        <ul>
+                            <li><div class="talk-item"><span><b>UChicago &amp; Caltech AI+Science Conference 2026</b> — University of Chicago [Poster]</span><span class="talk-date">Oct 2026</span></div></li>
+                            <li><div class="talk-item"><span><b>OpenSKAI Conference</b> — SKAI, Northwestern University [Poster]</span><span class="talk-date">Sep 2025, Sep 2026</span></div></li>
+                            <li><div class="talk-item"><span><b>IAIFI Summer School &amp; Workshop</b> — Harvard &amp; MIT [Lightning Talk]</span><span class="talk-date">Aug 2025</span></div></li>
+                            <li><div class="talk-item"><span><b>Cosmology &amp; Galaxy Astrophysics with Simulations and ML</b> — Flatiron Institute</span><span class="talk-date">Dec 2024</span></div></li>
+                            <li><div class="talk-item"><span><b>Code/Astro — Astronomy Software Development</b> — Northwestern University [Mentor &amp; TA — Parallel Programming]</span><span class="talk-date">Jul 2024</span></div></li>
+                            <li><div class="talk-item"><span><b>PyData Global</b></span><span class="talk-date">Oct 2021</span></div></li>
+                            <li><div class="talk-item"><span><b>SciPy Conference</b></span><span class="talk-date">Jul 2021</span></div></li>
+                        </ul>
+                    </div>
+                    <div class="resume-box mt-4">
+                        <h2>SERVICE &amp; TEACHING</h2>
+                        <span class="border"></span>
+                        <ul>
+                            <li><div class="talk-item"><span><b>Mentor</b> — NASA Space Apps (Chicago)</span><span class="talk-date">Nov 2026</span></div></li>
+                            <li><div class="talk-item"><span><b>Reviewer</b> — PEARC: Systems and Systems Software</span><span class="talk-date">May 2025</span></div></li>
+                            <li><div class="talk-item"><span><b>Graduate Teaching Assistant, Intro Physics II (PHYS 2212)</b> — Georgia Tech (120 undergrads)</span><span class="talk-date">Fall 2023 – Sum 2024</span></div></li>
+                        </ul>
+                        <span class="about-button">
+                            <a class="main-btn" href="cv/Sachin_resume_industry.pdf" target="_blank">Industry Resume (PDF)</a>
+                            <a class="main-btn" href="cv/Sachin_cv_academic.pdf" target="_blank">Academic CV (PDF)</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!---------------END Talks & Workshops---------------->
+
 
 
 
@@ -347,7 +546,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="freelance">
-                        <h2>Please feel free to reach out to me</h2>
+                        <h2>Set up a meeting</h2>
                         <!-- <p>Pleasure in the job puts perfection in the work</p> -->
                         <a target="_blank" href="mailto:tssachin.venkatesh@gmail.com" class="contact-btn">tssachin[dot]venkatesh[at]gmail[dot]com</a>
                     </div>
@@ -362,7 +561,7 @@
 
     <div class="tagline">
         <div class="container">
-            <h6>Sachin Venkatesh © 2023. All Right Reserved</h6>
+            <h6>Sachin Venkatesh © 2026. All Rights Reserved — Simulation panels &amp; rollout media: author's H-AMR / U-NO research.</h6>
         </div>
     </div>
 
@@ -371,6 +570,112 @@
 
 
 
+    <script>
+        // Hero video wipe: draws frame-locked H-AMR (left) vs Emulator (right)
+        // from a single packed 2x1 MP4 onto a 1:1 canvas; falls back to poster.
+        (function () {
+            var wrap = document.getElementById('hero-wipe');
+            var vid = document.getElementById('hero-wipe-video');
+            var canvas = document.getElementById('hero-wipe-canvas');
+            var range = wrap && wrap.querySelector('input[type="range"]');
+            if (!wrap || !vid || !canvas || !range) return;
+
+            var ctx = canvas.getContext('2d');
+            var pos = 0.5;
+            var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            var poster = new Image();
+            poster.src = 'images/hero_poster_wipe.jpg';
+
+            function drawSource(src, sw, sh) {
+                var half = sw / 2;
+                var w = canvas.width, h = canvas.height;
+                var sx = Math.round(pos * half);
+                var dx = Math.round(pos * w);
+                ctx.clearRect(0, 0, w, h);
+                if (dx > 0 && sx > 0) {
+                    ctx.drawImage(src, 0, 0, sx, sh, 0, 0, dx, h);
+                }
+                if (w - dx > 0 && half - sx > 0) {
+                    ctx.drawImage(src, half + sx, 0, half - sx, sh, dx, 0, w - dx, h);
+                }
+            }
+
+            var lastVidTime = -1;
+            function render(force) {
+                if (!reducedMotion && vid.readyState >= 2 && vid.videoWidth > 0) {
+                    if (!force && vid.currentTime === lastVidTime) return;
+                    lastVidTime = vid.currentTime;
+                    drawSource(vid, vid.videoWidth, vid.videoHeight);
+                } else if (poster.complete && poster.naturalWidth > 0) {
+                    drawSource(poster, poster.naturalWidth, poster.naturalHeight);
+                }
+            }
+
+            function updatePos() {
+                pos = range.value / 100;
+                wrap.style.setProperty('--pos', range.value + '%');
+                render(true);
+            }
+
+            range.addEventListener('input', updatePos);
+            poster.addEventListener('load', function () { render(true); });
+            vid.addEventListener('loadeddata', function () { render(true); });
+
+            if (reducedMotion) {
+                vid.pause();
+                render(true);
+                return;
+            }
+
+            function tick() {
+                render(false);
+                if (vid.requestVideoFrameCallback) {
+                    vid.requestVideoFrameCallback(tick);
+                } else {
+                    requestAnimationFrame(tick);
+                }
+            }
+            vid.play().catch(function () {});
+            if (vid.requestVideoFrameCallback) {
+                vid.requestVideoFrameCallback(tick);
+            } else {
+                requestAnimationFrame(tick);
+            }
+        })();
+        // Before/after reveal sliders: vertical divider wipes between H-AMR
+        // (left) and forecast (right). Overlay image is sized to the card in
+        // px so it reveals by cropping, never by squeezing.
+        document.querySelectorAll('[data-compare]').forEach(function (el) {
+            var range = el.querySelector('input[type="range"]');
+            var topImg = el.querySelector('.cmp-top img');
+            var baseImg = el.querySelector(':scope > picture img');
+            function fit() { topImg.style.width = el.clientWidth + 'px'; }
+            function set() { el.style.setProperty('--pos', range.value + '%'); }
+            range.addEventListener('input', set);
+            window.addEventListener('resize', fit);
+            if (window.ResizeObserver) new ResizeObserver(fit).observe(el);
+            if (baseImg && !baseImg.complete) baseImg.addEventListener('load', fit);
+            fit(); set();
+        });
+        // Sticky-nav active link on scroll
+        (function () {
+            var ids = ['home', 'about-me', 'research', 'experience', 'publications', 'talks', 'contact'];
+            var links = document.querySelectorAll('.head-link a');
+            function onScroll() {
+                var cur = 'home';
+                ids.forEach(function (id) {
+                    var s = document.getElementById(id);
+                    if (s && s.getBoundingClientRect().top < 160) cur = id;
+                });
+                links.forEach(function (a) {
+                    var href = a.getAttribute('href');
+                    if (href === '#' + cur || (cur === 'home' && href === '#')) a.classList.add('active');
+                    else a.classList.remove('active');
+                });
+            }
+            window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+        })();
+    </script>
 
 </body>
 
